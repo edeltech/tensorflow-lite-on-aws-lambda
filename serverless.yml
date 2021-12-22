@@ -3,24 +3,29 @@ service: tensorflow-lite-on-aws-lambda
 provider:
   name: aws
   runtime: python3.7
+  region: eu-central-1
+  versionFunctions: false
+
+  ecr:
+    images:
+      tf-lite:
+        path: ./
 
 functions:
   predict:
-    handler: handler.predict
-
-plugins:
-  - serverless-python-requirements
-
-custom:
-  pythonRequirements:
-    dockerizePip: true
-    dockerRunCmdExtraArgs: ["-v", "${env:PWD}/wheels:/wheels"]
+    image:
+      name: tf-lite
+      entryPoint:
+        - /usr/local/bin/python
+        - -m
+        - awslambdaric
+      command:
+        - handler.predict
 
 package:
-  exclude:
-    - "**/**"
-  include:
-    - handler.py
-    - model.tflite
-    - labels.txt
-    - image.jpg
+  patterns:
+    - '!**/**'
+    - 'handler.py'
+    - 'model.tflite'
+    - 'labels.txt'
+    - 'image.jpg'
