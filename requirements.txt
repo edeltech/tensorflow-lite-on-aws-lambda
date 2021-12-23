@@ -1,7 +1,4 @@
 Pillow==7.2.0
-awslambdaric==2.0.0
 
-# Linux
-# /wheels/tflite_runtime-2.3.0-cp38-cp38-linux_x86_64.whl; sys_platform == 'linux'
-
-# --extra-index-url https://google-coral.github.io/py-repo/ tflite_runtime
+--extra-index-url https://google-coral.github.io/py-repo/ 
+tflite_runtime
