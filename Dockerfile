@@ -1,11 +1,8 @@
-FROM public.ecr.aws/lambda/python:3.9-x86_64
+FROM public.ecr.aws/lambda/python:3.8
 
-RUN yum -y install bash
-
-COPY handler.py ${LAMBDA_TASK_ROOT}
-COPY labels.txt ${LAMBDA_TASK_ROOT}
-COPY model.tflite ${LAMBDA_TASK_ROOT}
-COPY image.jpg ${LAMBDA_TASK_ROOT}
+COPY app.py model.tflite labels.txt image.jpg "${LAMBDA_TASK_ROOT}"
 
 COPY requirements.txt  .
 RUN pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
+
+CMD ["app.handler"]

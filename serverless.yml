@@ -1,19 +1,16 @@
 service: tensorflow-lite-on-aws-lambda
 
+frameworkVersion: '2'
+
 provider:
   name: aws
-  runtime: python3.9
-  region: eu-central-1
-  versionFunctions: false
-
+  lambdaHashingVersion: 20201221
   ecr:
     images:
-      tf-lite:
+      appimage:
         path: ./
 
 functions:
-  predict:
+  hello:
     image:
-      name: tf-lite
-      command:
-        - handler.predict
+      name: appimage

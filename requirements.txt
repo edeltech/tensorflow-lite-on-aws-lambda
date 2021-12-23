@@ -1,4 +1,4 @@
-Pillow==8.3.2
+Pillow==8.4.0
 
 --extra-index-url https://google-coral.github.io/py-repo/ 
 tflite_runtime
