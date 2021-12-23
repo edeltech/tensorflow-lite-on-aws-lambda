@@ -1,16 +1,11 @@
-FROM python:3.7-buster
+FROM public.ecr.aws/lambda/python:3.7
 
-RUN apt-get update
-RUN pip install --upgrade pip
+RUN yum -y install bash
 
-ENV APPDIR /app
+COPY handler.py ${LAMBDA_TASK_ROOT}
+COPY labels.txt ${LAMBDA_TASK_ROOT}
+COPY model.tflite ${LAMBDA_TASK_ROOT}
+COPY image.jpg ${LAMBDA_TASK_ROOT}
 
-RUN mkdir -p $APPDIR
-WORKDIR $APPDIR
-
-ADD requirements.txt $APPDIR
-
-RUN pip install -r requirements.txt
-RUN pip install --user --no-build-isolation --extra-index-url https://google-coral.github.io/py-repo/ tflite_runtime
-
-ADD . $APPDIR
+COPY requirements.txt  .
+RUN pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
