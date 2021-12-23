@@ -15,17 +15,5 @@ functions:
   predict:
     image:
       name: tf-lite
-      entryPoint:
-        - /usr/local/bin/python
-        - -m
-        - awslambdaric
       command:
         - handler.predict
-
-package:
-  patterns:
-    - '!**/**'
-    - 'handler.py'
-    - 'model.tflite'
-    - 'labels.txt'
-    - 'image.jpg'
