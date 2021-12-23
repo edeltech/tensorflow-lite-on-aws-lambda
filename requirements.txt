@@ -1,7 +1,4 @@
-Pillow==7.2.0
+Pillow==8.4.0
 
-# Linux
-/wheels/tflite_runtime-2.4.0-cp37-cp37m-linux_x86_64.whl; sys_platform == 'linux'
-
-# Max OS X (used for local development)
-https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp37-cp37m-macosx_10_14_x86_64.whl; sys_platform == 'darwin'
+--extra-index-url https://google-coral.github.io/py-repo/ 
+tflite_runtime

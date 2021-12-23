@@ -1,26 +1,16 @@
 service: tensorflow-lite-on-aws-lambda
 
+frameworkVersion: '2'
+
 provider:
   name: aws
-  runtime: python3.7
+  lambdaHashingVersion: 20201221
+  ecr:
+    images:
+      appimage:
+        path: ./
 
 functions:
-  predict:
-    handler: handler.predict
-
-plugins:
-  - serverless-python-requirements
-
-custom:
-  pythonRequirements:
-    dockerizePip: true
-    dockerRunCmdExtraArgs: ["-v", "${env:PWD}/wheels:/wheels"]
-
-package:
-  exclude:
-    - "**/**"
-  include:
-    - handler.py
-    - model.tflite
-    - labels.txt
-    - image.jpg
+  hello:
+    image:
+      name: appimage

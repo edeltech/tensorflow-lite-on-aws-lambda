@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 
 
-def predict(event, context):
+def handler(event, context):
 
     # load the image
     image = Image.open('image.jpg')
