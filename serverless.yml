@@ -2,7 +2,7 @@ service: tensorflow-lite-on-aws-lambda
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.9
   region: eu-central-1
   versionFunctions: false
 
