@@ -1,6 +1,7 @@
 import json
 
 import tflite_runtime.interpreter as tflite
+
 import numpy as np
 
 from PIL import Image
